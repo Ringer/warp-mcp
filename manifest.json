@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "warp-mcp",
   "display_name": "WARP by Ringer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "SIP trunking, numbers, porting, messaging, billing, and CDR analytics on the Ringer WARP platform",
   "long_description": "Gives AI agents full access to the WARP Customer API: provision SIP trunks and credentials, search and order phone numbers, run port-in requests end to end, register 10DLC brands and campaigns and send messages, check balances and invoices, and analyze call detail records.",
   "author": {

@@ -1,6 +1,6 @@
 {
   "name": "warp-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MCP server for the Ringer WARP platform — SIP trunking, numbers, porting, messaging, billing, and CDR analytics",
   "mcpName": "io.github.ringer/warp",
   "type": "module",
