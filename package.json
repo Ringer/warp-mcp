@@ -1,0 +1,70 @@
+{
+  "name": "warp-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for the Ringer WARP platform — SIP trunking, numbers, porting, messaging, billing, and CDR analytics",
+  "mcpName": "io.github.ringer/warp",
+  "type": "module",
+  "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./lib": {
+      "import": "./dist/lib.js",
+      "types": "./dist/lib.d.ts"
+    }
+  },
+  "bin": {
+    "warp-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "postinstall.js",
+    ".claude-plugin",
+    ".mcp.json",
+    "server.json"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "postinstall": "node postinstall.js",
+    "prepublishOnly": "npm run build",
+    "version": "node scripts/sync-versions.mjs && git add .claude-plugin/plugin.json server.json manifest.json"
+  },
+  "keywords": [
+    "mcp",
+    "modelcontextprotocol",
+    "warp",
+    "ringer",
+    "telecom",
+    "sip-trunking",
+    "voip",
+    "porting",
+    "10dlc",
+    "messaging",
+    "cdr"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ringer/warp-mcp.git"
+  },
+  "author": "Ringer",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "warp",
+  "version": "1.0.0",
+  "description": "MCP server for the Ringer WARP platform — SIP trunking, numbers, porting, messaging, billing, and CDR analytics",
+  "author": {
+    "name": "Ringer",
+    "url": "https://ringer.tel"
+  },
+  "repository": "https://github.com/Ringer/warp-mcp",
+  "homepage": "https://warp.ringer.tel",
+  "license": "MIT",
+  "keywords": [
+    "mcp",
+    "warp",
+    "ringer",
+    "telecom",
+    "sip-trunking",
+    "porting",
+    "messaging",
+    "10dlc"
+  ],
+  "mcpServers": "./.mcp.json",
+  "userConfig": {
+    "api_token": {
+      "description": "Your WARP API key (rk_...) — minted in the WARP portal at https://warp.ringer.tel under Settings → API Keys.",
+      "sensitive": true
+    }
+  }
+}

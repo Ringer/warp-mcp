@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci --ignore-scripts
+      - run: npm run build
+      - run: npm test
+
+      # Smoke test: the built server must start and list all tools over stdio.
+      - name: Inspector smoke test
+        run: npx -y @modelcontextprotocol/inspector --cli node dist/index.js --method tools/list | grep -q "warp_status"

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "warp": {
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/dist/index.js"],
+      "env": {
+        "WARP_API_TOKEN": "${user_config.api_token}"
+      }
+    }
+  }
+}

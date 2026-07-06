@@ -1,0 +1,57 @@
+{
+  "manifest_version": "0.3",
+  "name": "warp-mcp",
+  "display_name": "WARP by Ringer",
+  "version": "1.0.0",
+  "description": "SIP trunking, numbers, porting, messaging, billing, and CDR analytics on the Ringer WARP platform",
+  "long_description": "Gives AI agents full access to the WARP Customer API: provision SIP trunks and credentials, search and order phone numbers, run port-in requests end to end, register 10DLC brands and campaigns and send messages, check balances and invoices, and analyze call detail records.",
+  "author": {
+    "name": "Ringer",
+    "url": "https://ringer.tel"
+  },
+  "homepage": "https://warp.ringer.tel",
+  "documentation": "https://github.com/Ringer/warp-mcp#readme",
+  "support": "https://github.com/Ringer/warp-mcp/issues",
+  "license": "MIT",
+  "keywords": [
+    "warp",
+    "ringer",
+    "telecom",
+    "sip-trunking",
+    "porting",
+    "10dlc",
+    "messaging"
+  ],
+  "server": {
+    "type": "node",
+    "entry_point": "dist/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "${__dirname}/dist/index.js"
+      ],
+      "env": {
+        "WARP_API_TOKEN": "${user_config.api_token}"
+      }
+    }
+  },
+  "user_config": {
+    "api_token": {
+      "type": "string",
+      "title": "WARP API Key",
+      "description": "Your WARP API key (rk_...) — minted in the WARP portal at https://warp.ringer.tel under Settings → API Keys",
+      "sensitive": true,
+      "required": true
+    }
+  },
+  "compatibility": {
+    "platforms": [
+      "darwin",
+      "win32",
+      "linux"
+    ],
+    "runtimes": {
+      "node": ">=20"
+    }
+  }
+}
