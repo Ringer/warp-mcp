@@ -2,7 +2,7 @@
   "name": "warp-mcp",
   "version": "1.0.1",
   "description": "MCP server for the Ringer WARP platform — SIP trunking, numbers, porting, messaging, billing, and CDR analytics",
-  "mcpName": "io.github.ringer/warp",
+  "mcpName": "io.github.Ringer/warp",
   "type": "module",
   "main": "dist/index.js",
   "exports": {

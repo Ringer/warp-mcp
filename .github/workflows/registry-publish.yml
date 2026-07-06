@@ -1,0 +1,28 @@
+name: Publish to MCP Registry (manual)
+
+# Manual re-run of the registry publish, for when the npm publish succeeded
+# but the registry step failed (server.json must match the published npm version).
+on:
+  workflow_dispatch:
+
+jobs:
+  mcp-registry:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v5
+
+      # Official mcp-publisher ships as a GitHub release binary
+      # (the npm package named "mcp-publisher" is unrelated — do not use it).
+      - name: Install mcp-publisher
+        run: |
+          curl -sSL "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m | sed 's/x86_64/amd64/').tar.gz" \
+            | tar xz mcp-publisher
+          sudo mv mcp-publisher /usr/local/bin/
+
+      - name: Publish to MCP Registry
+        run: |
+          mcp-publisher login github-oidc
+          mcp-publisher publish

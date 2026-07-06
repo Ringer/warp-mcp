@@ -1,6 +1,6 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.ringer/warp",
+  "name": "io.github.Ringer/warp",
   "description": "SIP trunking, numbers, porting, messaging, billing, and CDR analytics on the Ringer WARP platform",
   "repository": {
     "url": "https://github.com/Ringer/warp-mcp",
