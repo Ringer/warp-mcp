@@ -16,7 +16,7 @@ npx -y warp-mcp setup
 
 The wizard validates your API key, stores it in `~/.warp-mcp/config.json`, and registers the server with every MCP client it detects (Claude Code, Claude Desktop, Cursor, Codex, GitHub Copilot, ChatGPT Desktop).
 
-You need a WARP API key (`rk_...`) — mint one in the [WARP portal](https://warp.ringer.tel) under **Settings → API Keys**.
+You need a WARP API key (`rk_...`) — mint one in the [WARP portal](https://app.warp.ringer.tel) under **Settings → API Keys**.
 
 ## One-command installs
 
@@ -43,6 +43,36 @@ claude mcp add -s user warp -e WARP_API_TOKEN=rk_your_key -- npx -y warp-mcp
 ```
 
 See [INSTALL.md](INSTALL.md) for per-client walkthroughs, troubleshooting, and uninstall steps.
+
+## Hosted endpoint
+
+No local install needed — connect straight to `https://mcp.warp.ringer.tel/` (Streamable HTTP).
+
+**Desktop connectors (claude.ai, ChatGPT):** add a custom connector with that URL and
+sign in with your WARP account when prompted — the hosted endpoint authenticates via
+OAuth 2.1 and grants the same customer-scoped access as your portal login (never
+`admin:*`).
+
+**Developer / CLI clients:** authenticate with a bearer `rk_` key instead:
+
+```bash
+claude mcp add --transport http warp https://mcp.warp.ringer.tel/ \
+  --header "Authorization: Bearer $WARP_API_KEY"
+```
+
+```json
+{
+  "mcpServers": {
+    "warp": {
+      "type": "http",
+      "url": "https://mcp.warp.ringer.tel/",
+      "headers": { "Authorization": "Bearer rk_your_key_here" }
+    }
+  }
+}
+```
+
+Keys are minted in the [WARP portal](https://app.warp.ringer.tel) under **Settings → API Keys**.
 
 ## Tools
 

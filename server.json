@@ -20,7 +20,7 @@
       "environmentVariables": [
         {
           "name": "WARP_API_TOKEN",
-          "description": "WARP API key (rk_...) — minted in the WARP portal at https://warp.ringer.tel under Settings → API Keys",
+          "description": "WARP API key (rk_...) — minted in the WARP portal at https://app.warp.ringer.tel under Settings → API Keys",
           "isRequired": true,
           "isSecret": true
         }

@@ -5,7 +5,7 @@ import { stdin, stdout } from "node:process";
 import { CONFIG_DIR, CONFIG_FILE, DEFAULT_API_URL } from "./config.js";
 import { ICON_DARK_DATA_URI } from "./icons.js";
 
-const PORTAL_URL = "https://warp.ringer.tel";
+const PORTAL_URL = "https://app.warp.ringer.tel";
 const API_BASE_URL = process.env.WARP_API_BASE_URL || DEFAULT_API_URL;
 // Cheap authenticated GET: any valid customer key can call it, no params.
 const VALIDATION_ENDPOINT = "/v1/network/ingress-ips";
@@ -196,7 +196,9 @@ function detectMcpClients(): McpClient[] {
         console.log(`     Command: ${command}`);
         if (args.length) console.log(`     Args: ${args.join(" ")}`);
         if (token) {
-          console.log(`     Env: WARP_API_TOKEN=${token}`);
+          console.log(
+            `     Env: WARP_API_TOKEN=<your key — saved in ${CONFIG_FILE}>`
+          );
         }
         return true;
       },

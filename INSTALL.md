@@ -5,7 +5,7 @@ MCP server for the Ringer WARP platform. Works with any MCP-capable client over 
 ## Requirements
 
 - Node.js >= 20 (`node --version`)
-- A WARP API key (`rk_...`) — mint one in the [WARP portal](https://warp.ringer.tel) under **Settings → API Keys**. Test keys start with `rk_test_`.
+- A WARP API key (`rk_...`) — mint one in the [WARP portal](https://app.warp.ringer.tel) under **Settings → API Keys**. Test keys start with `rk_test_`.
 
 ## Quick start (recommended)
 
@@ -87,10 +87,37 @@ Settings → Developer Mode → Add MCP server:
 - Args: `-y warp-mcp`
 - Env: `WARP_API_TOKEN=rk_your_key`
 
+## Hosted endpoint (no local install)
+
+Instead of running the package locally, connect directly to
+`https://mcp.warp.ringer.tel/` (Streamable HTTP):
+
+- **Desktop connectors (claude.ai, ChatGPT):** add a custom connector with that URL
+  and sign in with your WARP account when prompted (OAuth 2.1) — grants the same
+  customer-scoped access as your portal login, never `admin:*`.
+- **Developer / CLI clients:** use a bearer `rk_` key:
+
+```bash
+claude mcp add --transport http warp https://mcp.warp.ringer.tel/ \
+  --header "Authorization: Bearer $WARP_API_KEY"
+```
+
+```json
+{
+  "mcpServers": {
+    "warp": {
+      "type": "http",
+      "url": "https://mcp.warp.ringer.tel/",
+      "headers": { "Authorization": "Bearer rk_your_key_here" }
+    }
+  }
+}
+```
+
 ## API key notes
 
 - Resolution order: `WARP_API_TOKEN` env var → `~/.warp-mcp/config.json` → unauthenticated (tools return setup guidance).
-- Keys cannot be created via the API — only in the portal (Settings → API Keys). Rotate or revoke compromised keys there immediately.
+- Keys cannot be created via the API — only in the [portal](https://app.warp.ringer.tel) (Settings → API Keys). Rotate or revoke compromised keys there immediately.
 - To update a stored key, run `warp-mcp setup` again, or edit `~/.warp-mcp/config.json`.
 
 ## Verifying the install
