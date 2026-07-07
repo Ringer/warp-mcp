@@ -50,8 +50,8 @@ No local install needed — connect straight to `https://mcp.warp.ringer.tel/` (
 
 **Desktop connectors (claude.ai, ChatGPT):** add a custom connector with that URL and
 sign in with your WARP account when prompted — the hosted endpoint authenticates via
-OAuth 2.1 and grants the same customer-scoped access as your portal login (never
-`admin:*`).
+OAuth 2.1 and grants your customer-scoped permissions (excluding admin surfaces, Buzz,
+and API-key management — those stay in the portal).
 
 **Developer / CLI clients:** authenticate with a bearer `rk_` key instead:
 

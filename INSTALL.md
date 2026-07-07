@@ -93,8 +93,9 @@ Instead of running the package locally, connect directly to
 `https://mcp.warp.ringer.tel/` (Streamable HTTP):
 
 - **Desktop connectors (claude.ai, ChatGPT):** add a custom connector with that URL
-  and sign in with your WARP account when prompted (OAuth 2.1) — grants the same
-  customer-scoped access as your portal login, never `admin:*`.
+  and sign in with your WARP account when prompted (OAuth 2.1) — grants your
+  customer-scoped permissions (excluding admin surfaces, Buzz, and API-key
+  management — those stay in the portal).
 - **Developer / CLI clients:** use a bearer `rk_` key:
 
 ```bash

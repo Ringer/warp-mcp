@@ -446,13 +446,22 @@ async function openBrowser(url: string): Promise<void> {
 
 function printManualConfig(token: string | null): void {
   const { command, args } = getServerCommand();
+  // Never print the raw token — it is already saved in CONFIG_FILE (where the
+  // server reads it from); the placeholder keeps the key off-screen and out of
+  // terminal scrollback / logs.
   const config = {
     mcpServers: {
       warp: {
         command,
         args,
         icon: ICON_DARK_DATA_URI,
-        ...(token ? { env: { WARP_API_TOKEN: token } } : {}),
+        ...(token
+          ? {
+              env: {
+                WARP_API_TOKEN: `<your key — saved in ${CONFIG_FILE}>`,
+              },
+            }
+          : {}),
       },
     },
   };
